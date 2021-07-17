@@ -1,6 +1,8 @@
+// Dependencies
 const express = require("express")
 const bookmarks = express.Router()
 const { getAllBookmarks, getBookmark, createBookmark, deleteBookmark, updateBookmark } = require("../queries/bookmarks.js")
+const { RecordNotFoundError } = require("../helper.js")
 
 
 // We need to send a request for some data in this endpoint "/"
@@ -39,12 +41,12 @@ bookmarks.post("/", async (req, res) => {
         if (bookmark.name) {
             res.json(bookmark)
         } else {
-            console.log(`Database error: ${bookmark}`)
-            throw `Error adding ${req.body} to the database`
+            const msg = `Record not added to database: ${JSON.stringify(bookmark)}`
+            throw new RecordNotFoundError(msg)
         }
     } catch (e) {
-        console.log(`Error in queries: ${e}`)
-        res.status(404).json({ error: `${e}` })
+        // console.log(`Error in queries: ${e}`)
+        res.status(404).json({ error: e })
     }
 })
 

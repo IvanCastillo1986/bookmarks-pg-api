@@ -26,7 +26,6 @@ module.exports = db
 // We have loaded and initialized the pg-promise library with const pgp = require("pg-promise")()
 // Then, we've created our Database object from the connection as pgp(connection)
     // The 'connection' parameter is either a Configuration Object or a Connection String
-console.log(cn)
 
 
 // The next thing we need to do is set up queries for the database that correspond to the 

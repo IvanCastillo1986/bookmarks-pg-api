@@ -6,5 +6,6 @@ INSERT INTO bookmarks
 VALUES
 ('MDN', 'https://developer.mozilla.org/en-US/', 'educational', true),
 ('Apartment Therapy', 'https://www.apartmenttherapy.com', 'inspirational', true),
-('DMV', 'https://dmv.ny.gov', 'adulting', true);
-
+('DMV', 'https://dmv.ny.gov', 'adulting', false),
+('YouTube', 'https://www.youtube.com', 'entertainment', true),
+('Total 180 Training', 'https://www.total180training.com', 'fitness', true);

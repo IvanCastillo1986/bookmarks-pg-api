@@ -2,10 +2,8 @@ const bookmarks = require("../controllers/bookmarksController");
 const db = require("../db/dbConfig");
 
 const getAllBookmarks = async () => {
-    try {   // we need to add a query inside of this try block
-        const allBookmarks = await db.any("SELECT * FROM bookmarks"); // promise.any(array/string) takes an iterable of promise objects 
-        // and, as soon as one of those promises in the iterable fulfills, returns a single promise that resolves with the value
-        // of that promise
+    try {
+        const allBookmarks = await db.any("SELECT * FROM bookmarks");
         return allBookmarks;
     } catch (error) {
         return error;
@@ -38,7 +36,6 @@ const createBookmark = async (bookmark) => {
         )
         return newBookmark
     } catch (e) {
-        console.log(`Error in queries ${e}`)
         return `Error in queries ${e}`
     }
 }
@@ -69,3 +66,8 @@ const updateBookmark = async (bookmark, id) => {
 module.exports = {
     getAllBookmarks, getBookmark, createBookmark, deleteBookmark, updateBookmark
 };
+
+// This file contains the actual Model for our back-end.
+// It is what retrieves the actual data from the database, thus providing our API with data.
+// This file is also where we give commands for all actions which will be performed on our database.
+// The data is then accessed through our controller, which only defines the routes, and how the data will be displayed to user.
